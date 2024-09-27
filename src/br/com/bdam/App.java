@@ -17,7 +17,7 @@ public class App {
 		List<String> pessoasSeparadas = separaPessoas(pessoas);
 		
 		//Transformando a lista em stream e deixando somente as pessoas do sexo feminino
-		Stream<String> feminino = pessoasSeparadas.stream().filter(pessoa -> pessoa.split("-")[1].equals("F"));
+		Stream<String> feminino = streamFeminino(pessoasSeparadas);
 		
 		//Impressão
 		System.out.println("Pessoas do sexo Feminino: ");
@@ -25,8 +25,13 @@ public class App {
 
 	}
 
-	private static List<String> separaPessoas(String pessoas) {
+	public static List<String> separaPessoas(String pessoas) {
 		List<String> pessoasSeparadas = List.of(pessoas.split(","));
 		return pessoasSeparadas;
+	}
+	
+	public static Stream<String> streamFeminino(List<String> pessoasSeparadas) {
+		Stream<String> pessoasFeminino = pessoasSeparadas.stream().filter(pessoa -> pessoa.split("-")[1].equals("F"));
+		return pessoasFeminino;
 	}
 }
